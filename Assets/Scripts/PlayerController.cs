@@ -6,11 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     private float speed = 20.0f;
     private float horizontalInput;
+    private float verticalInput;
     private float range = 20;
 
-    public GameObject trashPrefab;
-    public GameObject recyclePrefab;
-    public GameObject compostPrefab;
+    public GameObject ragPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +20,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move player horizontally
+        // Move player
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+
+        verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
         // Player Boundary
         if (transform.position.x < -range)
@@ -35,19 +37,11 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(range, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
+            Instantiate(ragPrefab, transform.position, ragPrefab.transform.rotation);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Instantiate(recyclePrefab, transform.position, recyclePrefab.transform.rotation);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Instantiate(compostPrefab, transform.position, compostPrefab.transform.rotation);
-        }
+       
     }
 }
