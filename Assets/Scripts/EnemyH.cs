@@ -15,11 +15,11 @@ public class EnemyH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyRb.position.x < -20)
+        if (enemyRb.position.x < -19)
         {
             transform.Rotate(0, -180, 0);
         }
-        else if (enemyRb.position.x > 20)
+        else if (enemyRb.position.x > 19)
         {
             transform.Rotate(0, 180, 0);
         }
