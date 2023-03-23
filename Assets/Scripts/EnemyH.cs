@@ -2,28 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyH : MonoBehaviour
 {
     public float speed = 3;
     private Rigidbody enemyRb;
-    private GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection * speed);
-        if (transform.position.y < -10)
+        if (enemyRb.position.x < -20)
         {
-            Destroy(gameObject);
-
+            transform.Rotate(0, -180, 0);
         }
+        else if (enemyRb.position.x > 20)
+        {
+            transform.Rotate(0, 180, 0);
+        }
+        enemyRb.transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 }

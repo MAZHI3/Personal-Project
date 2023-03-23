@@ -8,7 +8,6 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemy2Prefab;
     public GameObject enemy3Prefab;
     public float spawnRange = 20;
-    public float spawnPosZ = 20;
     public int enemyCount;
     public int waveNumber = 1;
 
@@ -33,7 +32,7 @@ public class SpawnManager : MonoBehaviour
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(1, 16);
 
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
 
